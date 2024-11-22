@@ -1,0 +1,49 @@
+import React, { useEffect, useRef,useState } from 'react'
+
+const Form = ({names, setNames}) => {
+  const [isDisabled, setDisabled] = useState(false);
+  const newname =useRef();
+
+  const handleOnSubmit = (event) => {
+    event.preventDefault();
+
+    if(names.length < 5 && newname.current.value != ''){
+      setNames([...names, newname.current.value]);
+      newname.current.value = "";
+    }else if(names.length >= 5){
+      setDisabled(true);
+    }
+
+  }
+
+  useEffect(() => {
+    if(newname){
+      console.log(`Welcome ${newname.current.value}, Hope u have a great day`);
+    }
+  }, [names]);
+
+  useEffect(() => {
+    //this runs when the component mounts
+
+    return (() => {
+      //this runs when the component unmounts
+      console.log("Unmounted");
+    })
+  }, []);
+
+  return (
+    <>
+    {isDisabled ? (
+      <p>Too Many Names</p>
+    ) : (
+      <form onSubmit={handleOnSubmit}>
+      <input type="text" ref={newname}/>
+      <input type="submit"  value="ADD"/>
+    </form>
+    )}
+     
+    </>
+  )
+}
+
+export default Form
