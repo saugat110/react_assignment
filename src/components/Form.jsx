@@ -2,8 +2,8 @@ import React, { useEffect, useRef,useState } from 'react'
 
 const Form = ({names, setNames}) => {
   const [isDisabled, setDisabled] = useState(false);
-  const[currName, setCurrName] = useState('');
-  const newname =useRef();
+  const [currName, setCurrName] = useState('');
+  const newname = useRef();
 
   const handleOnSubmit = (event) => {
     event.preventDefault();
@@ -32,9 +32,9 @@ const Form = ({names, setNames}) => {
       <p>Too Many Names</p>
     ) : (
       <form onSubmit={handleOnSubmit}>
-      <input type="text" ref={newname}/>
-      <input type="submit"  value="ADD"/>
-    </form>
+        <input type="text" ref={newname}/>
+        <input type="submit"  value="ADD"/>
+      </form>
     )}
      
     </>
