@@ -20,16 +20,10 @@ const Form = ({names, setNames}) => {
     if(newname){
       console.log(`Welcome ${newname.current.value}, Hope u have a great day`);
     }
-  }, [names]);
-
-  useEffect(() => {
-    //this runs when the component mounts
-
     return (() => {
-      //this runs when the component unmounts
       console.log("Unmounted");
     })
-  }, []);
+  }, [names]);
 
   return (
     <>
